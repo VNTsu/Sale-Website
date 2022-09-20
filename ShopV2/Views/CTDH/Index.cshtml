@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ShopV2.Models.OrderDetail>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutShop.cshtml";
+}
+
+<div class="panel-body">
+    <div class="table-responsive table-bordered">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Số Lượng</th>
+                    <th>Đơn Giá</th>
+                    <th>Thành Tiền </th>
+                </tr>
+            </thead>
+            <tbody>
+    @{int i = 0;} 
+    @{ int tong = 0;}
+    @foreach (var item in Model)
+    {
+        i++;
+        <tr>
+            <td>@i</td>
+            <td>@Html.DisplayFor(modelItem => item.Product.proName)</td>
+            <td>@Html.DisplayFor(modelItem => item.ordtsQuantity)</td>
+            <td>@Html.DisplayFor(modelItem => item.Product.proPrice)</td>
+            <td>@Html.DisplayFor(modelItem => item.ordtsThanhTien)</td>
+        </tr>
+                
+    }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.table-responsive -->
+</div>

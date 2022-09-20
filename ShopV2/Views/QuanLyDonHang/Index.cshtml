@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ShopV2.Models.Order>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutShop.cshtml";
+}
+
+<div class="panel-body">
+    <div class="table-responsive table-bordered">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Mã Đơn Hàng  </th>
+                    <th>Tin Nhắn</th>
+                    <th>Thời Gian</th> 
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{int i = 0;}
+                @foreach (var item in Model)
+                {
+                    i++;
+                    <tr>
+                        <td>@i</td>
+                        <td>@Html.DisplayFor(modelItem => item.orderID)</td>
+                        <td>@Html.DisplayFor(modelItem => item.orderMessage)</td>
+                        <td>@Html.DisplayFor(modelItem => item.orderDateTime)</td>
+                        <td>
+                        <td>
+                            @if (item.orderStatus.Equals("0")) {
+                            <a href="@Url.Action("Index", "CTDH", new { id = item.orderID })">Detail</a>
+                            <a href="@Url.Action("Update", "QuanLyDonHang", new { id = item.orderID })">Xác nhận</a>
+                            } 
+                            else {
+                            <a href="@Url.Action("Index", "CTDH", new { id = item.orderID })">Detail</a>
+                            <button> Đã Thanh Toán</button>
+                            }
+                            
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.table-responsive -->
+</div>
+

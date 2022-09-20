@@ -1,0 +1,11 @@
+﻿@model  IEnumerable<ShopV2.Models.Order>
+@{
+    ViewBag.Title = "test";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+@foreach (var item in Model)
+{
+    @item.orderID;
+}
+
